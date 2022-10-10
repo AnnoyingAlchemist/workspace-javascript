@@ -93,14 +93,18 @@
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                document.write(window.location.href);
+                //window.alert("ALERT!");
+                document.write(document.lastModified);
+                document.write(Date());
+                //Replaces the page: window.location.assign("https://github.com/AnnoyingAlchemist/CSCI225");
             </script>
 
         </div>
 
         <div class="practice">
             <h1> Get textcontent of an element </h1>
-            <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
+            <p>Perform arithmetic operation on <span id="num1"> 40 </span> and <span id="num2">5 </span> </p>
             <p>Result:
                 <script src="js/arith.js"></script>
             </p>
@@ -109,12 +113,28 @@
 
         <div class="practice">
             <h1> Get innerHTML of an elemnt</h1>
-            <p id="p1"> Paragraph Number One </p>
-            <p id="p2"> Paragraph Number two </p>
+            <p id="p1" onclick="changeit();" onmouseout="changeback(1)"> Paragraph Number One </p>
+            <p id="p2" onmouseover="changeitagain()" onmouseout="changeback()"> Paragraph Number two </p>
             <p id="p3"> Paragraph Number three </p>
             <p>Please write JavaScript code to change the content of each paragraph.​
             <p>
+                <script>
+                    //Event handler
+                    function changeit(){
+                        document.getElementById('p1').textContent="I did it!"; 
+                    }
+                    function changeitagain(){
+                        document.getElementById('p2').textContent="I did it again??"; 
+                    }
 
+                    function changeback(pnumber){
+                        if(pnumber == 1){
+                        document.getElementById('p1').textContent="Paragraph Number One";              
+                        }
+                        else
+                        document.getElementById('p2').textContent="Paragraph Number two";  
+                    }
+                </script>
 
         </div>
 
@@ -123,8 +143,13 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                    var n1 = parseInt(document.getElementsByName('num1')[0].value);
+                    var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    //debugging
+                    console.log("n1="+n1);
+                    //output
+                    var ans = n1+n2;
+                    document.getElementById('result').textContent = ans;
                 }
             </script>
             <p> <input type="text" name="num1" /> + <input type="text" name="num2">
@@ -153,6 +178,15 @@
                     </label>
                 </p>
             </form>
+            <script>
+                //event handler
+                function welcome_message(){
+                    window.alert("HELLO!!");
+                }
+                //event ---> event handler
+                var fE = document.getElementById('cName'); //input text box
+                fE.addEventListener('blur', welcome_message, false);
+            </script>
 
         </div>
 
