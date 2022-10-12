@@ -181,7 +181,9 @@
             <script>
                 //event handler
                 function welcome_message(){
-                    window.alert("HELLO!!");
+                    var name = document.getElementById('cName').value;
+                    document.getElementById('message').innerHTML="Welcome <b>"+name+"</b>";
+                    //window.alert("HELLO!!");
                 }
                 //event ---> event handler
                 var fE = document.getElementById('cName'); //input text box
@@ -194,7 +196,22 @@
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
             <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
+            <label id="sqr_result"> ? </label>
+
+            <script>
+                function calc_sqr(){
+                    var number = document.getElementById('num').value;
+                    
+
+                    var number = parseFloat(document.getElementById('num').value);
+                    var square = number*number;
+
+                    document.getElementById('sqr_result').innerHTML="<b>"+square+"</b>";
+                }
+
+                var sqr = document.getElementById('num');
+                sqr.addEventListener('blur', calc_sqr, false);
+            </script>
 
         </div>
 
