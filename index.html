@@ -145,6 +145,12 @@
                 function calculate() {
                     var n1 = parseInt(document.getElementsByName('num1')[0].value);
                     var n2 = parseInt(document.getElementsByName('num2')[0].value);
+                    
+                    //if(Number.isNaN(Number.parseFloat(n1)));
+                    //{
+                    //    window.alert("Not a number!");
+                    //}
+
                     //debugging
                     console.log("n1="+n1);
                     //output
@@ -225,8 +231,21 @@
 
             <input type="button" id="tryit" value="Click and Display"> 
 
-            <div id="message"> 
+            <div id="message2"> 
             </div>
+            <script>
+                //event handler
+                function toHTML(){
+                    var codes = document.getElementById('code').value;
+                    document.getElementById('message2').innerHTML = codes;
+
+                }
+
+                //event
+                var bE = document.getElementById('tryit');
+                bE.addEventListener('click', toHTML, false)
+
+            </script>
 
 
         </div>
