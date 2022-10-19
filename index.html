@@ -361,14 +361,69 @@
             <p>
                 <input type="button" value="Check Premium">
             </p>
-            <p id="result">
+            <p id="premium_result">
 
             </p>
             <script>
                 function getPremium(){
                     var rE = document.querySelector('input[name="coverage"]:checked');
                     var coverage = parseInt(rE.value);
+                    var index = document.getElementById('agegroup').selectedIndex;
                     console.log(coverage);
+                    console.log(index);
+
+                    let agefactor = 0;
+                    switch (index) {
+                        case 0:
+                            agefactor = 0.8;
+                            break;
+                        case 1:
+                            agefactor = 0.9;
+                            break;
+                        case 2:
+                            agefactor = 0.11;
+                            break;
+                        case 3:
+                            agefactor = 0.17;
+                            break;
+                        default:
+                            agefactor = 0;
+                            break;
+                    }
+
+                    console.log(agefactor);
+
+                    let base = 10; 
+                    premium = parseInt(base + (agefactor*coverage)/1000);
+
+                    document.getElementById("premium_result").textContent = premium.toString();
+                    //ANIMATION
+                    //this.animate([{transform:'scale(0.2)'},{transform:'scale(1.5)'}], {duration: 2000, fill:"forwards"});
+                    //You can replace "this" with the element you want to animate
+                    if(index == 0)
+                    {
+                        this.animate([{transform:'scale(0.2)'},{transform:'scale(1.5)'}], {duration: 2000, fill:"forwards"});
+                        document.getElementById("premium_result").animate([{transform:'translate(0,0)'},{transform:'translate(100px,0)'}], {duration: 2000, fill:"forwards"});
+                    }
+                    else if(index == 1)
+                    {
+                        this.animate([{transform:'translate(0,0)'},{transform:'translate(100px,0)'}], {duration: 2000, fill:"forwards"});
+                        document.getElementById("premium_result").animate([{transform:'translate(0,0)'},{transform:'translate(-100px,0)'}], {duration: 2000, fill:"forwards"});
+                    }
+                    else if(index == 2)
+                    {
+                        this.animate([{transform:'translate(0,0)'},{transform:'translate(1000px,0)'}], {duration: 2000, fill:"forwards"});
+                        document.getElementById("premium_result").animate([{transform:'translate(0,0)'},{transform:'translate(100px,0)'}], {duration: 2000, fill:"forwards"});
+                    }
+                    else if(index == 3)
+                    {
+                        this.animate([{transform:'scale(2)'},{transform:'scale(0.5)'}], {duration: 2000, fill:"forwards"});
+                        document.getElementById("premium_result").animate([{transform:'translate(0,0)'},{transform:'translate(-100px,0)'}], {duration: 2000, fill:"forwards"});
+                    }
+                    
+
+                    
+
                 }
 
                 var bE = document.querySelector('input[value="Check Premium"]');
@@ -383,11 +438,32 @@
 
         <div class="practice">
             <h1>For Loop Practice 1 </h1>
-            <p> Display the square of numer 1... N </p>
+            <p> Display the square of number 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input type="button" value="Click for Square" id="squareButton">
             </p>
+            <p id="square_result">
+
+            </p>
+            <script>
+                
+                function doSum() {
+                    var sum = 0;
+                    var inputNum = document.getElementById("inputnumber1").value
+                    var square = "";
+                    inputNum = parseInt(inputNum);
+                    for (let i = 1; i < inputNum+1; i++) 
+                    {
+                        square += ((i*i) + " ").toString();
+                        console.log(square);
+                    }
+                    document.getElementById("square_result").textContent = square;
+                }
+
+                document.getElementById("squareButton").addEventListener("click", doSum, false);
+                
+            </script>
 
         </div>
 
