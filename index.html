@@ -469,7 +469,7 @@
             <h1>For Loop Practice 2 </h1>
             <!--  Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
-            <p> 
+            <p>
                 <input type="button" id="showtable" value="Click for multiplication table">
             </p>
 
@@ -546,17 +546,28 @@
                 </tr>
             </table>
             <script>
+                var stats = [0, 0, 0, 0, 0, 0];
                 function changeimage() {
-                    var stats=[0,0,0,0,0,0]
+                    var num = Math.floor(Math.random() * 6 + 1);
+                    stats[num - 1]++;
+                    document.getElementById('dice').setAttribute('src', "img/die" + num + ".png");
+
+                    /* for (var i in stats) {
+                            console.log(stats[i]);
+                    } */
+                    document.getElementById("r" + num).textContent = stats[num-1].toString();
+/*()
+                    for (var i = 0; i < stats.length; i++) {
+                        console.log("index "+ i + ": "+stats[i]);
+                        console.log("num= " + num)
+                        console.log("Displaying stats[i+1]: " + stats[i])
+                       
+                    }
+                    */
                     
-                    var num = Math.floor(Math.random()*6+1);
-                    stats[num-1] += 1;
-                    document.getElementById('dice').setAttribute('src', "img/die"+num+".png");
-                    
-                    document.getElementById("r" + num).textContent += stats[num-1]; //Doesn't work quite right, should probbably use a switch statement instead.
                 }
 
-                document.getElementById('roll').addEventListener('click',changeimage,false);
+                document.getElementById('roll').addEventListener('click', changeimage, false);
 
             </script>
         </div>
@@ -580,6 +591,20 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
             <script>
+                /*Automatic Event
+                setInterval(changepic,5000);
+                var index = 0;
+                //static list of all image elements
+                var imglist = document.querySelectorAll(".img-container-hide");
+                //imglist[0].setAttribute('class',"img-container")
+                //Event Handler
+                function changepic() {
+                    index = index %imglist.length;
+                    imglist[index].setAttribute('class',"img-container-hide")
+                    index++;
+                    imglist[index].setAttribute('class',"img-container")
+                }
+                */
 
             </script>
 
@@ -633,9 +658,10 @@
 
 
     </div>
+    
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
-
+        
 
 </body>
 
